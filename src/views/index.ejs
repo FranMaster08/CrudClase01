@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('partials/head', {title: 'home'}) %>
+
+<body>
+  <%- include('partials/nav', {navtitle: 'Fran'}) %>
+  <h1><%= title %></h1>
+  <p>Welcome to <%= title %></p>
+
+  <div>
+    <form action="/" method="post">
+      <div class="form-control">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" placeholder="Ingrese nombre Nombre">
+      </div>
+      <div class="form-control">
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" placeholder="Ingrese nombre Apellido">
+      </div>
+      <div class="form-control">
+        <label for="pass">Password</label>
+        <input type="password" name="pass" placeholder="Ingrese nombre password">
+      </div>
+      <div>
+        <input type="submit" value="Guardar">
+        <input type="reset" value="limpiar">
+      </div>
+
+    </form>
+    <section>
+      <ul>
+        <% if (data) { %>
+        <% data.forEach(function(alumno){ %>
+        <li>
+          <%= alumno.nombre  %>
+          <%= alumno.apellido %> 
+          <a href="/borrar/<%= alumno.id  %>" class="borrar">Borrar</a>
+          <a href="/actualizar/<%= alumno.id %>" class="borrar">Actualizar</a>
+        </li>
+        <% }); %>
+        <% } %>
+      </ul>
+    </section>
+  </div>
+
+</body>
+
+</html>
